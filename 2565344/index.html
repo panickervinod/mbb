@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+#curve-text {
+  font: 40px sans-serif;
+}
+
+#curve-line {
+  stroke: #999;
+  fill: none;
+}
+
+</style>
+<body>
+<script src="//d3js.org/d3.v3.min.js"></script>
+<script>
+
+var svg = d3.select("body").append("svg")
+    .attr("width", 960)
+    .attr("height", 500)
+    .attr("viewBox", "0 0 1000 300");
+
+svg.append("defs").append("path")
+    .attr("id", "curve")
+    .attr("d", "M100,200C200,100 300,0 400,100C500,200 600,300 700,200C800,100 900,100 900,100");
+
+svg.append("text")
+    .attr("id", "curve-text")
+  .append("textPath")
+    .attr("xlink:href", "#curve")
+    .text("We go up, then we go down, then up again.");
+
+svg.append("use")
+    .attr("id", "curve-line")
+    .attr("xlink:href", "#curve");
+
+</script>
